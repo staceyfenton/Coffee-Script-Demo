@@ -1,0 +1,87 @@
+<!doctype HTML>
+
+<html>
+	<head>
+		<title>Home Screen</title>
+		<link rel="stylesheet" href="css/styles.css" />
+		<meta name="viewport" content="width=300, initial-scale=1">
+	</head>
+	<body>
+		<div class="handset">
+			<div class="screens"></div>
+			<ul class="indicators"></ul>
+			<ul class="dock"></ul>
+		</div>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="js/coffeescript.js"></script>
+		
+		<script type="text/coffeescript">
+		# Icons
+		icon = (@filename, @title) ->	
+			@markup = "<li><img src='img/icons/#{@filename}.png' alt='#{@title}' />#{@title}</li>"	
+		
+		# Screens
+		screen = (icons) ->
+			@markup = []
+			i = 0
+			while i < icons.length
+				@markup.push icons[i].markup
+				i++
+			@markup
+		
+		# Set the stage...
+		stage = (@icons, @container, @indicators) ->
+			screenWidth = 300
+			noOfScreens = Math.ceil(icons.length / 20)
+			i = 0
+			while noOfScreens--
+				s = new screen(icons[i...i+20])
+				@container.append("<ul>#{s.join('')}</ul>")
+				@indicators.append('<li />') 
+				i+=20
+			
+			@indicators.find('li:first').addClass('active');		
+		
+		$ ->		
+			appIcons = [
+				new icon('messages', 'Messages'),
+				new icon('Weather', 'Weather'),
+				new icon('Videos', 'Videos'),
+				new icon('Users', 'Users'),
+				new icon('Twitter', 'Twitter'),
+				new icon('Photoshop', 'Photoshop'),
+				new icon('Photos', 'Photos'),
+				new icon('Passbook', 'Passbook'),
+				new icon('Newsstand', 'Newsstand'),
+				new icon('Notes', 'Notes'),
+				new icon('Maps', 'Maps'),
+				new icon('iTunes', 'iTunes'),
+				new icon('Reminders', 'Reminders'),
+				new icon('FaceTime', 'FaceTime'),
+				new icon('Dictionary', 'Dictionary'),
+				new icon('AppStore', 'App Store'),
+				new icon('Calculator', 'Calculator'),
+				new icon('Calendar', 'Calendar'),
+				new icon('Camera', 'Camera'),
+				new icon('Clock', 'Clock'),
+				new icon('Compass', 'Compass'),
+				new icon('Contacts', 'Contacts'),
+				new icon('Developer', 'Developer')
+			]
+			
+			dockIcons = [
+				new icon('Phone', 'Phone'),
+				new icon('Mail', 'Mail'),
+				new icon('safari', 'Safari'),
+				new icon('Music', 'Music'),
+			]
+			
+			container = $('.screens')
+			indicators = $('.indicators')
+			dock = $('.dock')	
+			homeScreen = new stage(appIcons, container, indicators)	
+			dock.append(new screen(dockIcons))
+		</script>
+	</body>
+</html>

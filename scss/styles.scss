@@ -1,0 +1,71 @@
+body {
+	background: #2d2d2d;
+	margin: 20px 0;
+	font-size: 9px;
+	font-family: Helvetica, sans-serif;
+	line-height: 1;
+}
+
+.handset {
+	width: 300px;
+	height: 634px;
+	margin: 0 auto;
+	background: url(../img/handset.jpg);
+	overflow: hidden;
+}
+
+ul {
+	width: 300px;
+	list-style: none;
+	padding: 0 22px 0 26px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	margin: 0;
+	overflow: hidden;
+}
+
+.screens li, .dock li {
+	float: left;
+	width: 48px;
+	padding: 9px 0 0 12px;
+	color: #fff;
+	text-align: center;
+	img {
+		display: block;
+		padding-bottom: 3px;
+	}
+}
+
+.screens {
+	width: 900px;
+	ul {
+		float: left;
+		padding-top: 103px;
+	}
+}
+
+.dock {
+	clear: both;
+	li {
+		padding-top: 15px;
+	}
+}
+
+.indicators {
+	text-align: center;
+	clear: both;
+	padding-top: 5px;
+	li {
+		border-radius:50%;
+		display: inline-block;
+		margin:0 4px;
+		width:6px;
+		height:6px;
+		background: #fff;
+		opacity:0.6;
+	}
+	.active {
+		opacity: 1;
+	}
+}
+
